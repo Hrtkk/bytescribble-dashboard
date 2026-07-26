@@ -1,0 +1,103 @@
+---
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '../styles/global.css';
+
+const title = 'Scribble Board — draw anything';
+const description =
+  'A tiny drawing board: pressure-tapered brush, mirror modes for instant mandalas, and one-click PNG export. Part of ByteScribble.';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href="https://dashboard.bytescribble.com/" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://dashboard.bytescribble.com/" />
+    <meta name="twitter:card" content="summary" />
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <a class="brand" href="https://bytescribble.com">
+          <span class="brand-dot" aria-hidden="true"></span>
+          <span class="brand-name">Scribble Board</span>
+        </a>
+        <span class="brand-tag">draw anything · nothing is saved anywhere but here</span>
+        <div class="spacer"></div>
+        <button id="theme" class="icon-btn" title="Light / dark board" aria-label="Toggle board theme">◐</button>
+        <a class="icon-btn" href="https://bytescribble.com" title="Back to ByteScribble" aria-label="Back to ByteScribble">↗</a>
+      </header>
+
+      <!-- One panel today; the grid is here so more can slot in later. -->
+      <main class="grid">
+        <section class="panel" aria-label="Drawing board">
+          <div class="panel-head">
+            <h1 class="panel-title">Board</h1>
+            <span class="panel-meta" id="stroke-count">0 strokes</span>
+          </div>
+
+          <div class="toolbar" role="toolbar" aria-label="Drawing tools">
+            <div class="tool-group" role="group" aria-label="Tool">
+              <button class="tool" data-tool="brush" aria-pressed="true" title="Brush (B)">✒︎</button>
+              <button class="tool" data-tool="eraser" aria-pressed="false" title="Eraser (E)">◻︎</button>
+            </div>
+
+            <div class="swatches" role="group" aria-label="Colour">
+              <button class="swatch" data-color="#F3F4F8" style="--s:#F3F4F8" aria-pressed="true" title="Chalk"></button>
+              <button class="swatch" data-color="#FFB347" style="--s:#FFB347" aria-pressed="false" title="Amber"></button>
+              <button class="swatch" data-color="#5EE6C0" style="--s:#5EE6C0" aria-pressed="false" title="Mint"></button>
+              <button class="swatch" data-color="#7DB0EA" style="--s:#7DB0EA" aria-pressed="false" title="Sky"></button>
+              <button class="swatch" data-color="#E88AA2" style="--s:#E88AA2" aria-pressed="false" title="Rose"></button>
+              <button class="swatch" data-color="#A78BFA" style="--s:#A78BFA" aria-pressed="false" title="Violet"></button>
+              <label class="swatch custom" title="Pick a colour">
+                <input type="color" id="custom-color" value="#ffd166" />
+              </label>
+            </div>
+
+            <label class="slider">
+              <span>Size</span>
+              <input type="range" id="size" min="1" max="48" value="6" />
+            </label>
+
+            <div class="tool-group" role="group" aria-label="Mirror">
+              <button class="tool wide" data-mirror="1" aria-pressed="true" title="No mirror">1×</button>
+              <button class="tool wide" data-mirror="2" aria-pressed="false" title="Mirror">2×</button>
+              <button class="tool wide" data-mirror="6" aria-pressed="false" title="Six-fold mandala">6×</button>
+              <button class="tool wide" data-mirror="12" aria-pressed="false" title="Twelve-fold mandala">12×</button>
+            </div>
+
+            <div class="spacer"></div>
+
+            <div class="tool-group">
+              <button class="tool" id="undo" title="Undo (⌘Z)">↶</button>
+              <button class="tool" id="redo" title="Redo (⇧⌘Z)">↷</button>
+              <button class="tool" id="clear" title="Clear the board">⌫</button>
+              <button class="tool" id="save" title="Download PNG">⤓</button>
+            </div>
+          </div>
+
+          <div class="canvas-wrap" id="canvas-wrap">
+            <canvas id="board"></canvas>
+            <p class="canvas-hint" id="hint">Draw with a mouse, trackpad, finger or stylus. Try <strong>6×</strong> for a mandala.</p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footbar">
+        <span>Part of <a href="https://bytescribble.com">ByteScribble</a></span>
+        <span class="foot-keys"><kbd>B</kbd> brush · <kbd>E</kbd> eraser · <kbd>⌘Z</kbd> undo · <kbd>[</kbd> <kbd>]</kbd> size</span>
+      </footer>
+    </div>
+
+    <script>
+      import '../scripts/board.js';
+    </script>
+  </body>
+</html>
