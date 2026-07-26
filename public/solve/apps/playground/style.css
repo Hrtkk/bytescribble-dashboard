@@ -1,0 +1,26 @@
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body { margin: 0; font: 14px/1.45 system-ui, sans-serif; background: #eef1f6; color: #22304a; }
+header { display: flex; gap: 10px; align-items: center; padding: 10px 16px; background: #1d3557; color: #fff; }
+header h1 { font-size: 15px; margin: 0 12px 0 0; font-weight: 600; }
+header input { font: inherit; padding: 6px 10px; border-radius: 6px; border: none; width: 130px; }
+button { font: inherit; padding: 6px 12px; border-radius: 6px; border: 1px solid #c6cfdd; background: #fff; cursor: pointer; }
+button:hover { background: #f2f5fa; }
+button:disabled { opacity: .45; cursor: not-allowed; }
+header button { border: none; background: #e9b949; color: #23304a; font-weight: 600; }
+.quick { background: #33507a !important; color: #fff !important; font-weight: 400 !important; }
+main { display: grid; grid-template-columns: 1fr 340px; gap: 12px; padding: 12px 16px; }
+#board-wrap { position: relative; background: #fff; border-radius: 10px; box-shadow: 0 1px 4px rgba(20,30,60,.12); }
+#board { width: 100%; height: 430px; display: block; border-radius: 10px; touch-action: none; cursor: crosshair; }
+#chip { position: absolute; top: 10px; right: 12px; background: #22304a; color: #fff; padding: 4px 10px; border-radius: 999px; font-size: 12px; display: none; }
+#controls { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+aside { display: flex; flex-direction: column; gap: 10px; }
+.panel { background: #fff; border-radius: 10px; padding: 10px 12px; box-shadow: 0 1px 4px rgba(20,30,60,.12); }
+.panel h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: #6b7890; margin: 0 0 6px; }
+#explainer { min-height: 74px; font-size: 13px; }
+#explainer .just { color: #6b7890; font-size: 12px; margin-top: 6px; }
+#console { height: 210px; overflow-y: auto; font: 11px/1.5 ui-monospace, monospace; color: #33507a; white-space: pre-wrap; }
+#ask { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(20,30,50,.35); border-radius: 10px; }
+#ask .box { background: #fff; padding: 16px 18px; border-radius: 10px; width: 300px; }
+#ask input { font: inherit; padding: 6px 10px; width: 90px; border: 1px solid #c6cfdd; border-radius: 6px; }
+.note { font-size: 11px; color: #8a94a8; margin-top: 4px; }

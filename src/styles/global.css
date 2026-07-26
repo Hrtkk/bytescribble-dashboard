@@ -79,6 +79,15 @@ a { color: var(--accent); }
 }
 .icon-btn:hover { border-color: var(--line-2); color: var(--fg); }
 
+.pill-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 34px; padding: 0 13px;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 9px; color: var(--fg); text-decoration: none;
+  font-size: 13px; font-weight: 500; white-space: nowrap;
+}
+.pill-link:hover { border-color: var(--accent); color: var(--accent); }
+
 /* ---------- Panel grid ---------- */
 .grid {
   display: grid;

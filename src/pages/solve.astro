@@ -1,0 +1,48 @@
+---
+// The Solve Desk (problem-runtime M0) — an interactive AI problem-solving
+// surface: write an arithmetic problem, it reads → compiles → runs a
+// deterministic execution trace → verifies → teaches step-by-step, with a
+// 💡 hint ladder and a Tab "ghost step". The whole runtime is vendored under
+// /public/solve as native ES modules (no bundler); onnxruntime-web loads from
+// jsDelivr. See problem-runtime/ for the source of truth.
+const title = 'Solve Desk — write a problem, watch it solved';
+const description =
+  'An interactive problem-solving runtime: write an arithmetic problem by hand and it is recognised, solved as a verified execution trace, and taught step by step — hints and a Tab ghost-step included. Part of ByteScribble.';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href="https://dashboard.bytescribble.com/solve" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://dashboard.bytescribble.com/solve" />
+    <meta name="twitter:card" content="summary" />
+
+    <!-- Solve Desk styles (vendored) -->
+    <link rel="stylesheet" href="/solve/apps/playground/style.css" />
+
+    <!-- onnxruntime-web (the onnx-digits recognition lane) from jsDelivr, pinned.
+         ORT resolves its wasm relative to this module URL, so nothing else to host. -->
+    <script type="importmap" is:inline set:html={`
+{ "imports": { "onnxruntime-web": "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.27.0/dist/ort.wasm.bundle.min.mjs" } }
+`}></script>
+  </head>
+  <body>
+    <a class="solve-back" href="/">← ByteScribble dashboard</a>
+    <!-- The Desk builds its own DOM (header + board + panels). Native ESM, no bundler. -->
+    <script type="module" is:inline src="/solve/apps/playground/app.js"></script>
+    <style is:inline>
+      .solve-back {
+        position: fixed; top: 10px; right: 14px; z-index: 50;
+        font: 500 13px/1 Inter, system-ui, sans-serif;
+        color: #9aa4bf; text-decoration: none; opacity: .8;
+      }
+      .solve-back:hover { opacity: 1; color: #c9d2ea; }
+    </style>
+  </body>
+</html>
